@@ -10,4 +10,4 @@ RAT Patterns:
 - NjRAT
 - NanoCore RAT
 
-The collection of malware signatures to perfrom malware threat hunting and detection. Most of the sample that's use to do analysis and wrote the YARA rules is from Abuse.ch, or the public source of it.
+The collection of detection rules to perfrom threat hunting and malware detection. Most of the sample that's use to do analysis and wrote the detection rules is from Abuse.ch, or the public source of it.
