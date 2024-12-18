@@ -6,16 +6,16 @@ This repository contains a collection of detection rules for threat hunting and 
     <li>Botnet</li>
     <ul>
         <li>Gafgyt</li>
+        <li>Kaiten</li>
         <li>Mirai</li>
         <li>Mozi</li>
-        <li>Kaiten</li>
         <li>PerlBot Botnet</li>
     </ul>
     <br>
     <li>RAT</li>
     <ul>
-        <li>NjRAT</li>
         <li>AsyncRAT</li>
         <li>NanoCore RAT</li>
+        <li>NjRAT</li>
     </ul>
 </ul>
