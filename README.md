@@ -18,4 +18,9 @@ This repository contains a collection of detection rules for threat hunting and 
         <li>NanoCore RAT</li>
         <li>NjRAT</li>
     </ul>
+    <br>
+    <li>Ransomware</li>
+    <ul>
+        <li>Limpopo</li>
+    </ul>
 </ul>
