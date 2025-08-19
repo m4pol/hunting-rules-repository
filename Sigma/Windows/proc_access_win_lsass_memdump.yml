@@ -22,11 +22,11 @@ detection:
                 SourceImage|endswith:
                         - "mimikatz.exe"
                         - "rdrleakdiag.exe"
-                        - "createdump.exe"
-                        - "dump64.exe"
-                        - "DumpMinitool.exe"
-                        - "processdump.exe"
-                        - "SqlDumper.exe"
+                        - "createdump.exe" # Microsoft.NETCore.App, Azure Connected Machine Agent
+                        - "dump64.exe" # Microsoft Visual Studio
+                        - "DumpMinitool.exe" # Microsoft Visual Studio
+                        - "processdump.exe" # cisco jabber
+                        - "SqlDumper.exe" # Microsoft SQL Server, Microsoft Office
                         - "procdump.exe"
         filter_call_trace_rundll32:
                 SourceImage|endswith:
