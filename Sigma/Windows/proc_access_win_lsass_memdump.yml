@@ -39,8 +39,7 @@ detection:
                         - "winlogon.exe"
         condition: selection and (
                         (filter_suspicious_process and filter_lsass_related_process) or 
-                        (filter_call_trace_rundll32 and filter_lsass_related_process)
-                )
+                        (filter_call_trace_rundll32 and filter_lsass_related_process))
 falsepositives:
         - Unknown
 level: high
