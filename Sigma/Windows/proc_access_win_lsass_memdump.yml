@@ -1,7 +1,7 @@
 title: Credential dumping from memory.
 id: 63b4264d-0123-42a4-bafb-1bfda6ccf804
 status: experimental
-description: Detects a suspicious process attempting to access an LSASS-related process, which could indicate credential dumping.
+description: Detects a suspicious process attempting to access an LSASS-related process, which could be indicate to credential dumping.
 references:
         - https://lolbas-project.github.io/#lsass
         - https://www.ired.team/offensive-security/credential-access-and-credential-dumping/dump-credentials-from-lsass-process-without-mimikatz
