@@ -1,14 +1,14 @@
 title: Credential dumping from memory.
 id: 63b4264d-0123-42a4-bafb-1bfda6ccf804
 status: experimental
-description: Detects a suspicious process attempting to access an LSASS-related process, which could be indicate to credential dumping.
+description: Detects a suspicious process attempting to access an LSASS-related process, which could indicate credential dumping.
 references:
         - https://lolbas-project.github.io/#lsass
         - https://attack.mitre.org/techniques/T1003/001/
         - https://www.ired.team/offensive-security/credential-access-and-credential-dumping/dump-credentials-from-lsass-process-without-mimikatz
 author: Phatcharadol Thangplub
 date: 2025-08-19
-modified: 2025-08-19
+modified: 2025-08-20
 tags:
         - attack.T1003.001
 logsource:
@@ -37,9 +37,7 @@ detection:
                 TargetImage|endswith:
                         - "lsass.exe"
                         - "winlogon.exe"
-        condition: selection and (
-                        (filter_suspicious_process and filter_lsass_related_process) or 
-                        (filter_call_trace_rundll32 and filter_lsass_related_process))
+        condition: selection and ((filter_suspicious_process or filter_call_trace_rundll32) and filter_lsass_related_process)
 falsepositives:
         - Unknown
 level: high
