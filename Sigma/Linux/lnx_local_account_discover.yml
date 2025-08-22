@@ -18,7 +18,7 @@ logsource:
 detection:
         selection:
                 SourceType|contains: "linux:audit"
-        filter_local_account_discovery:
+        filter_commands:
                 exe|endswith:
                         - "cat"
                         - "more"
@@ -35,7 +35,7 @@ detection:
                         - "/etc/sudoers"
                         - "/etc/shadow"
                         - "/etc/group"
-        condition: selection and filter_local_account_discovery
+        condition: selection and filter_commands
 falsepositives:
         - Unknown
 level: medium
