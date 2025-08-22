@@ -34,4 +34,9 @@ The primary goal of this repository is to develop a collection of threat hunting
     <ul>
         <li>LSASS Memory</li>
     </ul>
+    <br>    
+    <li>Account Discovery</li>
+    <ul>
+        <li>Local Account</li>
+    </ul>
 </ul>
