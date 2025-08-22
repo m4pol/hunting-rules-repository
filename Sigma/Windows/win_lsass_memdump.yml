@@ -29,6 +29,7 @@ detection:
                         - "processdump.exe" # cisco jabber
                         - "SqlDumper.exe" # Microsoft SQL Server, Microsoft Office
                         - "procdump.exe"
+                        - "nanodump.*exe"
         filter_call_trace_rundll32:
                 SourceImage|endswith:
                         - "rundll32.exe"
