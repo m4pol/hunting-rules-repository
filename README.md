@@ -1,4 +1,4 @@
-This repository contains a collection of threat hunting rules. The majority of the samples used for analysis and rule development are sourced from Abuse.ch and other public resources, including red teaming tools. The primary goal of this repository is to develop a collection of threat hunting rules that are accurate, performant, and optimized for minimal rule size.
+This repository contains a collection of threat-hunting rules. The majority of the samples used for analysis and rule development are sourced from Abuse.ch and other public resources, including red teaming tools. A primary goal of this repository is to develop a collection of threat-hunting rules that are accurate, performant, and optimized for minimal rule size.
 
 <h1>YARA</h1>
 
@@ -38,4 +38,5 @@ This repository contains a collection of threat hunting rules. The majority of t
         <li>Local Account</li>
     </ul>
 </ul>
+
 
