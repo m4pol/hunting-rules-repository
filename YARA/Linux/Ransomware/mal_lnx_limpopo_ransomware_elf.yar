@@ -3,6 +3,7 @@ rule Mal_LNX_Limpopo_Ransomware_ELF {
         description = "Use to detect Limpopo ransomware."
         author = "Phatcharadol Thangplub"
         date = "14-02-2025"
+        references="https://www.fortinet.com/blog/threat-research/ransomware-roundup-shinra-and-limpopo-ransomware"
 
     strings:
         $s1 = /(LIMPOPO|limpopo|Limpopo)/
