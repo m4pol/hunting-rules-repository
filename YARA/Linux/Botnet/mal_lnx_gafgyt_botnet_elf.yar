@@ -27,7 +27,6 @@ rule Mal_LNX_Gafgyt_Botnet_ELF {
                 $hex4 = { 78 30 4b e2 ?? 0? 1? e5 03 10 a0 e1 [3] eb } //ARM
 
         condition:
-                uint32(0) == 0x464C457F and filesize > 50KB and filesize <= 180KB and (
-                        (($s1 and $s2 and $s3) or (($s4 or ($hex1 or $hex2)) or ($s5 or ($hex3 or $hex4)))) and (2 of ($s6, $s7, $s8))
-                )
+                uint32(0) == 0x464C457F and filesize > 50KB and filesize <= 180KB and 
+                ((($s1 and $s2 and $s3) or (($s4 or ($hex1 or $hex2)) or ($s5 or ($hex3 or $hex4)))) and (2 of ($s6, $s7, $s8)))
 }

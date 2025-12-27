@@ -37,7 +37,6 @@ rule Mal_LNX_Limpopo_Ransomware_ELF {
                 c7 44 ?? ?? 00 00 00 00 8d ?? d0 ec ff ff 89 04 ?? e8 }
 
     condition:
-        uint32(0) == 0x464C457F and filesize <= 80KB and (
-            ($s1 or ($s1 and $s2 and $s3 and $s4 and $s5)) and all of ($hex*)
-        )
+        uint32(0) == 0x464C457F and filesize <= 80KB and 
+        (($s1 or ($s1 and $s2 and $s3 and $s4 and $s5)) and all of ($hex*))
 }

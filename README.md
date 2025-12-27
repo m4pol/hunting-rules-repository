@@ -5,10 +5,10 @@ The majority of the samples used for analysis and rule development are sourced f
 <ul>
     <li>Botnet</li>
     <ul>
-        <li>Gafgyt</li>
-        <li>Kaiten</li>
-        <li>Mirai</li>
-        <li>Mozi</li>
+        <li>Gafgyt Botnet</li>
+        <li>Kaiten Botnet</li>
+        <li>Mirai Botnet</li>
+        <li>Mozi Botnet</li>
         <li>PerlBot Botnet</li>
     </ul>
     <br>
@@ -21,7 +21,8 @@ The majority of the samples used for analysis and rule development are sourced f
     <br>
     <li>Ransomware</li>
     <ul>
-        <li>Limpopo</li>
+        <li>Limpopo Ransomware</li>
+        <li>RA World Ransomware</li>
     </ul>
 </ul>
 
@@ -38,6 +39,3 @@ The majority of the samples used for analysis and rule development are sourced f
         <li>Local Account</li>
     </ul>
 </ul>
-
-
-
