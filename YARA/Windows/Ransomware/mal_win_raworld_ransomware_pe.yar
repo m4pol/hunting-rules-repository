@@ -19,5 +19,6 @@ rule Mal_WIN_RAWorld_Ransomware_PE {
                 $s11 = "we are ra world. this is finish" fullword wide
 
         condition:
-                uint16(0) == 0x5A4D and filesize >= 200KB and filesize <= 1MB and (5 of ($s*))
+                uint16(0) == 0x5A4D and filesize >= 200KB and filesize <= 1MB and (6 of ($s*))
+
 }
