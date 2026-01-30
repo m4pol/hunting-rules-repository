@@ -1,0 +1,80 @@
+title: SVCStealer – File or Directory Interaction on an Infected Machine.
+id: af0cc1b6-7176-42e5-a398-22350312a2a7
+status: experimental
+description: Detects SVCStealer file or direcory interaction on a potentially infected machine.
+references:
+        - https://attack.mitre.org/
+        - https://any.run/malware-trends/svcstealer/
+        - https://www.seqrite.com/blog/svc-new-stealer-on-the-horizon/
+author: Phatcharadol Thangplub
+date: 2025-01-28
+modified: 2025-01-28
+tags:
+        - attack.T1083
+        - attack.T1560
+        - attack.T1070.004
+        - attack.T1074.001
+logsource:
+        product: windows
+        service: sysmon
+detection:
+        selection:
+                SourceType|contains: "Microsoft-Windows-Sysmon/Operational"
+        filter_file_or_directory_creation:
+                EventID: 11
+        filter_file_or_directory_deletion:
+                EventID: 23
+        filter_wild_targeted_file_or_directory:
+                TargetFilename|endswith:
+                        - "C:\\ProgramData\\*.zip"
+                        - "C:\\ProgramData\\*\\*.jpg"
+                        - "C:\\ProgramData\\*\\*.txt"
+                TargetFilename|contains:
+                        - "C:\\ProgramData\\*\\Wallets"
+                        - "C:\\ProgramData\\*\\Browsers"
+                        - "C:\\ProgramData\\*\\Messengers"
+                        - "C:\\ProgramData\\*\\FTP Clients"
+                        - "C:\\ProgramData\\*\\FileGrabber"
+        condition: selection and ((filter_file_or_directory_creation or filter_file_or_directory_deletion) and filter_wild_targeted_file_or_directory)
+falsepositives:
+        - Unknown
+level: high
+
+title: SVCStealer – Connection to a web based C2.
+id: 13099a64-622d-47e8-b395-9116625d14ec
+status: experimental
+description: Detects SVCStealer web based C2 connections on a potentially infected machine.
+references:
+        - https://attack.mitre.org/
+        - https://any.run/malware-trends/svcstealer/
+        - https://www.seqrite.com/blog/svc-new-stealer-on-the-horizon/
+author: Phatcharadol Thangplub
+date: 2025-01-28
+modified: 2025-01-28
+tags:
+        - attack.T1048.003
+logsource:
+        product: windows
+        service: sysmon
+detection:
+        selection:
+                SourceType|contains: "Microsoft-Windows-Sysmon/Operational"
+        filter_network_connection:
+                EventID: 3
+                Protocol: tcp
+                DestinationIp:
+                        - "62.60.226.159"
+                        - "176.113.115.149"
+                        - "185.39.17.158"
+                        - "185.81.68.156"
+                        - "194.38.21.76"
+                        - "77.90.153.62"
+                        - "185.39.17.233"
+        filter_dns_query:
+                EventID: 22
+                QueryName|startswith:
+                        - "diamotrix"
+        condition: selection and (filter_network_connection or filter_dns_query)
+falsepositives:
+        - Unknown
+level: high
