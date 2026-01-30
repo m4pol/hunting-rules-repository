@@ -38,6 +38,7 @@ The majority of the samples used for analysis and rule development are sourced f
     <ul>
         <li>SVCStealer Behavior</li>
     </ul>
+    <br>
     <li>OS Credential Dumping</li>
     <ul>
         <li>LSASS Memory</li>
