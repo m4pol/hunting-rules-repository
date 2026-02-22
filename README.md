@@ -37,6 +37,7 @@ The majority of the samples used for analysis and rule development are sourced f
     <li>Malware Behavior</li>
     <ul>
         <li>SVCStealer Behavior</li>
+        <li>Diaoyu Loader Behavior</li>
     </ul>
     <br>
     <li>OS Credential Dumping</li>
@@ -49,3 +50,4 @@ The majority of the samples used for analysis and rule development are sourced f
         <li>Local Account</li>
     </ul>
 </ul>
+
