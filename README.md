@@ -29,6 +29,11 @@ The majority of the samples used for analysis and rule development are sourced f
     <ul>
         <li>SVCStealer</li>
     </ul>
+    <br>
+    <li>Loader</li>
+    <ul>
+        <li>Diaoyu Loader</li>
+    </ul>
 </ul>
 
 <h1>Sigma</h1>
@@ -50,4 +55,5 @@ The majority of the samples used for analysis and rule development are sourced f
         <li>Local Account</li>
     </ul>
 </ul>
+
 
