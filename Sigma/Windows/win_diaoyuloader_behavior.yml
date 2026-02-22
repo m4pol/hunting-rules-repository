@@ -1,0 +1,62 @@
+title: Diaoyu Loader – Download Cobalt Strike beacon.
+id: 68782286-e349-4a02-8d88-f4c9052f6fd2
+status: experimental
+description: Detects Diaoyu Loader Download Cobalt Strike beacon.
+references:
+        - https://attack.mitre.org/
+        - https://unit42.paloaltonetworks.com/shadow-campaigns-uncovering-global-espionage/
+author: Phatcharadol Thangplub
+date: 2025-02-22
+modified: 2025-02-22
+tags:
+        - attack.T1105
+logsource:
+        product: windows
+        service: sysmon
+detection:
+        selection:
+                SourceType|contains: "Microsoft-Windows-Sysmon/Operational"
+                EventID: 22
+        filter_dns_query:
+                QueryName|startswith:
+                        - "raw.githubusercontent.com"
+        filter_legitimate_browsers:
+                Image|contains:
+                        - "C:\\Program Files\\*\\chrome.exe"
+                        - "C:\\Program Files\\*\\msedge.exe"
+                        - "C:\\Program Files\\*\\firefox.exe"
+                        - "C:\\Program Files\\*\\brave.exe"
+                        - "C:\\AppData\\Local\\Programs\\*\\opera.exe"
+        condition: selection and (filter_dns_query and not filter_legitimate_browsers)
+falsepositives:
+        - Unknown
+level: high
+
+title: Diaoyu Loader – Create Cobalt Strike beacon.
+id: c4f89e97-8b44-49c6-bb25-9beea66210a5
+status: experimental
+description: Detects Diaoyu Loader Create Cobalt Strike beacon.
+references:
+        - https://attack.mitre.org/
+        - https://unit42.paloaltonetworks.com/shadow-campaigns-uncovering-global-espionage/
+author: Phatcharadol Thangplub
+date: 2025-02-22
+modified: 2025-02-22
+tags:
+        - attack.T1105
+logsource:
+        product: windows
+        service: sysmon
+detection:
+        selection:
+                SourceType|contains: "Microsoft-Windows-Sysmon/Operational"
+        filter_file_creation:
+                EventID: 11
+                TargetFilename|contains:
+                        - "C:\\Users\\*\\Links\\*.docx"
+                        - "C:\\Users\\*\\Videos\\*.exe"
+                        - "C:\\Users\\*\\Videos\\*.dll"
+        condition: selection and filter_file_creation
+falsepositives:
+        - Unknown
+level: high
