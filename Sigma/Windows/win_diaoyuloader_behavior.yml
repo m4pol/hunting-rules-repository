@@ -6,8 +6,8 @@ references:
         - https://attack.mitre.org/
         - https://unit42.paloaltonetworks.com/shadow-campaigns-uncovering-global-espionage/
 author: Phatcharadol Thangplub
-date: 2025-02-22
-modified: 2025-02-22
+date: 2026-02-22
+modified: 2026-02-22
 tags:
         - attack.T1105
 logsource:
@@ -40,8 +40,8 @@ references:
         - https://attack.mitre.org/
         - https://unit42.paloaltonetworks.com/shadow-campaigns-uncovering-global-espionage/
 author: Phatcharadol Thangplub
-date: 2025-02-22
-modified: 2025-02-22
+date: 2026-02-22
+modified: 2026-02-22
 tags:
         - attack.T1105
 logsource:
