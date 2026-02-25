@@ -13,12 +13,11 @@ rule Mal_WIN_RAWorld_Ransomware_PE {
                 $s5 = "C:\\Windows\\Help\\Stage1.exe" fullword ascii
                 $s6 = "C:\\Windows\\Help\\Pay.txt" fullword ascii
                 $s7 = "Data breach warning.txt" fullword wide
-                $s8 = ".YoyVd" fullword wide
-                $s9 = ".RAWLD" fullword wide
-                $s10 = "For whom the bell tolls, it tolls for thee." fullword ascii
-                $s11 = "we are ra world. this is finish" fullword wide
+                $s8 = ".RAWLD" fullword wide
+                $s9 = "For whom the bell tolls, it tolls for thee." fullword ascii
+                $s10 = "we are ra world. this is finish" fullword wide
 
         condition:
-                uint16(0) == 0x5A4D and filesize >= 200KB and filesize <= 1MB and (6 of ($s*))
+                uint16(0) == 0x5A4D and filesize >= 200KB and filesize <= 1MB and (5 of ($s*))
 
 }
