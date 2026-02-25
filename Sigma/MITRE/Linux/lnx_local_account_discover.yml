@@ -1,0 +1,39 @@
+title: Linux Local Account Discovery
+id: fc59189b-988d-4a80-a260-21e93b916034
+status: experimental
+description: Detects the use of Linux commands that read account-related files, which could indicated to linux local account discovery.
+references:
+        - https://attack.mitre.org/techniques/T1087/001/
+        - https://www.atomicredteam.io/atomic-red-team/atomics/T1087.001
+        - https://github.com/microsoft/MSTIC-Sysmon/blob/main/linux/configs/attack-based/discovery/T1087.001_LocalAccount_Commands.xml
+        - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/security_guide/sec-understanding_audit_log_files
+author: Phatcharadol Thangplub
+date: 2025-08-19
+modified: 2025-02-26
+tags:
+        - attack.T1087.001
+logsource:
+        product: linux
+        service: auditd
+detection:
+        selection_commands:
+                exe|endswith:
+                        - "cat"
+                        - "more"
+                        - "less"
+                        - "head"
+                        - "tail"
+                        - "grep"
+                        - "strings"
+                        - "vi"
+                        - "vim"
+                        - "nano"
+                name|endswith:
+                        - "/etc/passwd"
+                        - "/etc/sudoers"
+                        - "/etc/shadow"
+                        - "/etc/group"
+        condition: selection_commands
+falsepositives:
+        - Unknown
+level: medium

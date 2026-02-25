@@ -1,0 +1,44 @@
+title: Credential dumping from memory.
+id: 63b4264d-0123-42a4-bafb-1bfda6ccf804
+status: experimental
+description: Detects a suspicious process attempting to access an LSASS-related process, which could indicate credential dumping.
+references:
+        - https://attack.mitre.org/techniques/T1003/001/
+        - https://www.atomicredteam.io/atomic-red-team/atomics/T1003.001
+        - https://lolbas-project.github.io/#lsass
+        - https://www.ired.team/offensive-security/credential-access-and-credential-dumping/dump-credentials-from-lsass-process-without-mimikatz
+author: Phatcharadol Thangplub
+date: 2025-08-19
+modified: 2025-02-26
+tags:
+        - attack.T1003.001
+logsource:
+        product: windows
+        service: sysmon
+detection:
+        selection_event_id:
+                EventID: 10
+        selection_suspicious_process:
+                SourceImage|endswith:
+                        - "mimikatz.exe"
+                        - "rdrleakdiag.exe"
+                        - "createdump.exe" # Microsoft.NETCore.App, Azure Connected Machine Agent
+                        - "dump64.exe" # Microsoft Visual Studio
+                        - "DumpMinitool.exe" # Microsoft Visual Studio
+                        - "processdump.exe" # cisco jabber
+                        - "SqlDumper.exe" # Microsoft SQL Server, Microsoft Office
+                        - "procdump.exe"
+                        - "nanodump.*exe"
+        selection_call_trace_rundll32:
+                SourceImage|endswith:
+                        - "rundll32.exe"
+                CallTrace|contains:
+                        - "comsvcs.dll"
+        selection_lsass_related_process:
+                TargetImage|endswith:
+                        - "lsass.exe"
+                        - "winlogon.exe"
+        condition: selection_event_id and ((selection_suspicious_process or selection_call_trace_rundll32) and selection_lsass_related_process)
+falsepositives:
+        - Unknown
+level: high
