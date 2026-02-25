@@ -9,16 +9,14 @@ references:
         - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/security_guide/sec-understanding_audit_log_files
 author: Phatcharadol Thangplub
 date: 2025-08-19
-modified: 2025-08-22
+modified: 2025-02-26
 tags:
         - attack.T1087.001
 logsource:
         product: linux
         service: auditd
 detection:
-        selection:
-                SourceType|contains: "linux:audit"
-        filter_commands:
+        selection_commands:
                 exe|endswith:
                         - "cat"
                         - "more"
@@ -35,7 +33,7 @@ detection:
                         - "/etc/sudoers"
                         - "/etc/shadow"
                         - "/etc/group"
-        condition: selection and filter_commands
+        condition: selection_commands
 falsepositives:
         - Unknown
 level: medium

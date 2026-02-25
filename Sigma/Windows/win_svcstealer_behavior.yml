@@ -1,4 +1,5 @@
 title: SVCStealer – File or Directory Interaction on an Infected Machine.
+name: File_or_Directory_Interaction_on_an_Infected_Machine
 id: af0cc1b6-7176-42e5-a398-22350312a2a7
 status: experimental
 description: Detects SVCStealer file or direcory interaction on a potentially infected machine.
@@ -7,8 +8,8 @@ references:
         - https://any.run/malware-trends/svcstealer/
         - https://www.seqrite.com/blog/svc-new-stealer-on-the-horizon/
 author: Phatcharadol Thangplub
-date: 2025-01-28
-modified: 2025-01-28
+date: 2026-01-28
+modified: 2026-02-26
 tags:
         - attack.T1083
         - attack.T1560
@@ -18,13 +19,10 @@ logsource:
         product: windows
         service: sysmon
 detection:
-        selection:
-                SourceType|contains: "Microsoft-Windows-Sysmon/Operational"
-        filter_file_or_directory_creation:
-                EventID: 11
-        filter_file_or_directory_deletion:
-                EventID: 23
-        filter_wild_targeted_file_or_directory:
+        selection_event_id:
+                - EventID: 11
+                - EventID: 23
+        selection_wild_targeted_file_or_directory:
                 TargetFilename|endswith:
                         - "C:\\ProgramData\\*.zip"
                         - "C:\\ProgramData\\*\\*.jpg"
@@ -35,31 +33,30 @@ detection:
                         - "C:\\ProgramData\\*\\Messengers"
                         - "C:\\ProgramData\\*\\FTP Clients"
                         - "C:\\ProgramData\\*\\FileGrabber"
-        condition: selection and ((filter_file_or_directory_creation or filter_file_or_directory_deletion) and filter_wild_targeted_file_or_directory)
+        condition: selection_event_id and selection_wild_targeted_file_or_directory
 falsepositives:
         - Unknown
 level: high
-
-title: SVCStealer – Connection to a web based C2.
+---
+title: SVCStealer – Connection to Web-Based C2
+name: Connection_to_Web_Based_C2
 id: 13099a64-622d-47e8-b395-9116625d14ec
 status: experimental
-description: Detects SVCStealer web based C2 connections on a potentially infected machine.
+description: Detects SVCStealer web-based C2 connections on a potentially infected machine.
 references:
         - https://attack.mitre.org/
         - https://any.run/malware-trends/svcstealer/
         - https://www.seqrite.com/blog/svc-new-stealer-on-the-horizon/
 author: Phatcharadol Thangplub
-date: 2025-01-28
-modified: 2025-01-28
+date: 2026-01-28
+modified: 2026-02-26
 tags:
         - attack.T1048.003
 logsource:
         product: windows
         service: sysmon
 detection:
-        selection:
-                SourceType|contains: "Microsoft-Windows-Sysmon/Operational"
-        filter_network_connection:
+        selection_network_connection:
                 EventID: 3
                 Protocol: tcp
                 DestinationIp:
@@ -70,11 +67,25 @@ detection:
                         - "194.38.21.76"
                         - "77.90.153.62"
                         - "185.39.17.233"
-        filter_dns_query:
+        selection_dns_query:
                 EventID: 22
                 QueryName|startswith:
                         - "diamotrix"
-        condition: selection and (filter_network_connection or filter_dns_query)
+        condition: selection_network_connection or selection_dns_query
 falsepositives:
         - Unknown
 level: high
+---
+title: SVCStealer – Correlate File or Directory Interaction and C2 Connection
+id: 05ab89db-9e60-4f41-b475-75145494f255
+correlation:
+        type: temporal
+        rules:
+                - File_or_Directory_Interaction_on_an_Infected_Machine
+                - Connection_to_Web_Based_C2
+        group-by:
+                - Computer
+                - User
+                - ProcessId
+                - Image
+        timespan: 2m

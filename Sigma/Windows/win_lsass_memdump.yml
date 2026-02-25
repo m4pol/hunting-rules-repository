@@ -9,17 +9,16 @@ references:
         - https://www.ired.team/offensive-security/credential-access-and-credential-dumping/dump-credentials-from-lsass-process-without-mimikatz
 author: Phatcharadol Thangplub
 date: 2025-08-19
-modified: 2025-08-22
+modified: 2025-02-26
 tags:
         - attack.T1003.001
 logsource:
         product: windows
         service: sysmon
 detection:
-        selection:
-                SourceType|contains: "Microsoft-Windows-Sysmon/Operational"
+        selection_event_id:
                 EventID: 10
-        filter_suspicious_process:
+        selection_suspicious_process:
                 SourceImage|endswith:
                         - "mimikatz.exe"
                         - "rdrleakdiag.exe"
@@ -30,16 +29,16 @@ detection:
                         - "SqlDumper.exe" # Microsoft SQL Server, Microsoft Office
                         - "procdump.exe"
                         - "nanodump.*exe"
-        filter_call_trace_rundll32:
+        selection_call_trace_rundll32:
                 SourceImage|endswith:
                         - "rundll32.exe"
                 CallTrace|contains:
                         - "comsvcs.dll"
-        filter_lsass_related_process:
+        selection_lsass_related_process:
                 TargetImage|endswith:
                         - "lsass.exe"
                         - "winlogon.exe"
-        condition: selection and ((filter_suspicious_process or filter_call_trace_rundll32) and filter_lsass_related_process)
+        condition: selection_event_id and ((selection_suspicious_process or selection_call_trace_rundll32) and selection_lsass_related_process)
 falsepositives:
         - Unknown
 level: high
