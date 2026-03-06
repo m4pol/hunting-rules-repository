@@ -9,7 +9,7 @@ references:
         - https://www.ired.team/offensive-security/credential-access-and-credential-dumping/dump-credentials-from-lsass-process-without-mimikatz
 author: Phatcharadol Thangplub
 date: 2025-08-19
-modified: 2026-03-05
+modified: 2026-03-07
 tags:
         - attack.T1003.001
 logsource:
@@ -17,7 +17,7 @@ logsource:
         service: sysmon
 detection:
         selection_event_id:
-                EventID: 10
+                EventCode: 10
         selection_suspicious_process:
                 SourceImage|endswith:
                         - "mimikatz.exe"
