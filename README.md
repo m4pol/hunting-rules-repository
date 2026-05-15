@@ -33,6 +33,7 @@ The majority of the samples used for analysis and rule development are sourced f
     <li>Loader</li>
     <ul>
         <li>Diaoyu Loader</li>
+        <li>GhostFetch Loader</li>
     </ul>
 </ul>
 
@@ -43,6 +44,7 @@ The majority of the samples used for analysis and rule development are sourced f
     <ul>
         <li>SVCStealer Behavior</li>
         <li>Diaoyu Loader Behavior</li>
+        <li>GhostFetch Loader Behavior</li>
     </ul>
     <br>
     <li>OS Credential Dumping</li>
