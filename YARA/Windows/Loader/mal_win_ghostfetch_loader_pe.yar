@@ -1,6 +1,6 @@
 rule Mal_WIN_GhostFetch_Loader_PE {
         meta:
-                description = "Use to detect GhostFetch Loader."
+                description = "Use to detect GhostFetch loader."
                 author = "Phatcharadol Thangplub"
                 date = "05-15-2026"
                 reference = "https://www.group-ib.com/blog/muddywater-operation-olalampo/"
