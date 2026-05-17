@@ -1,6 +1,6 @@
 rule Mal_WIN_Diaoyu_Loader_PE {
         meta:
-                description = "Use to detect Diaoyu Loader."
+                description = "Use to detect Diaoyu loader."
                 author = "Phatcharadol Thangplub"
                 date = "02-22-2026"
                 reference = "https://unit42.paloaltonetworks.com/shadow-campaigns-uncovering-global-espionage/"
